@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 5px 0px;
+}
+
+
+.div-price-per-clip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    height: 25px;
+}
+
+.marketing-level {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.div-wire {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.container {
+    max-width: 250px;
+    margin-left: 10px;
+}

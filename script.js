@@ -59,7 +59,7 @@ button_marketing.addEventListener("click", () => {
         marketing_cost_count *= 2.25;
         marketing_level_count += 1;
         marketing_level.innerText = marketing_level_count;
-        avaible_funds.innerText = "Avaible Funds: $ " + avaible_funds_count.toFixed(2);
+        avaible_funds.innerText = "Available Funds: $ " + avaible_funds_count.toFixed(2);
         public_demand.innerText = "Public Demand: " + public_demand_count.toFixed(0) + "%"; 
         marketing_cost.innerText = "Cost: $ " + marketing_cost_count.toFixed(0);
     }
@@ -92,7 +92,7 @@ lower.addEventListener("click", () => {
         price_per_clip_count -= 0.01;
         price_per_clip.innerText = "Price per Clip: $ " + price_per_clip_count.toFixed(2);
         public_demand_count += 3;
-        public_demand.innerText = "Public Demand: " + public_demand_count + "%"; 
+        public_demand.innerText = "Public Demand: " + public_demand_count.toFixed(0) + "%"; 
     }
     
 });
@@ -103,7 +103,7 @@ wire_button.addEventListener("click", () => {
         inches_count += 1000;
         avaible_funds_count -= manufacturing_cost_count;
         inches.innerText = inches_count + " inches";
-        avaible_funds.innerText = "Avaible Funds: $ " + avaible_funds_count.toFixed(2);
+        avaible_funds.innerText = "Available Funds: $ " + avaible_funds_count.toFixed(2);
     }
 });
 
@@ -115,7 +115,7 @@ auto_clippers_button.addEventListener("click", () => {
         auto_clippers_cost_count += 0.10;
         auto_clippers_paragraph_count += 1;
         auto_clippers_paragraph.innerText = auto_clippers_paragraph_count;
-        avaible_funds.innerText = "Avaible Funds: $ " + avaible_funds_count.toFixed(2);
+        avaible_funds.innerText = "Available Funds: $ " + avaible_funds_count.toFixed(2);
         auto_clippers_cost.innerText = "cost: $ " + auto_clippers_cost_count.toFixed(2);
 
     }

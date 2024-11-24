@@ -25,8 +25,13 @@ let auto_clippers_button = document.querySelector(".div-auto-clippers button");
 let auto_clippers_paragraph = document.querySelector(".div-auto-clippers p");
 let auto_clippers_paragraph_count = 0;
 let auto_clippers = 0;
-let theme = document.querySelector("#theme");
+let button_marketing = document.querySelector("#marketing-button");
+let marketing_cost_count = 100;
+let marketing_level = document.querySelector("#marketing-level");
+let marketing_level_count = 1;
+let marketing_cost = document.querySelector("#marketing-cost");
 
+let theme = document.querySelector("#theme");
 let buttons = document.querySelectorAll("button");
 let header = document.querySelector("header");
 let body = document.querySelector("body");
@@ -47,7 +52,18 @@ theme.addEventListener("change", () => {
     }
 });
 
-
+button_marketing.addEventListener("click", () => {
+    if(avaible_funds_count >= marketing_cost_count) {
+        avaible_funds_count -= manufacturing_cost_count;
+        public_demand_count *= 1.25;
+        marketing_cost_count *= 2.25;
+        marketing_level_count += 1;
+        marketing_level.innerText = marketing_level_count;
+        avaible_funds.innerText = "Avaible Funds: $ " + avaible_funds_count.toFixed(2);
+        public_demand.innerText = "Public Demand: " + public_demand_count.toFixed(0) + "%"; 
+        marketing_cost.innerText = "Cost: $ " + marketing_cost_count.toFixed(0);
+    }
+});
 
 make_paperclip_button.addEventListener("click", () => {
     if(inches_count > 0) {
@@ -65,7 +81,7 @@ raise.addEventListener("click", () => {
         price_per_clip_count += 0.01;
         price_per_clip.innerText = "Price per Clip: $ " + price_per_clip_count.toFixed(2);
         public_demand_count -= 3
-        public_demand.innerText = "Public Demand: " + public_demand_count + "%"; 
+        public_demand.innerText = "Public Demand: " + public_demand_count.toFixed(0) + "%"; 
     }
     
 });
@@ -106,12 +122,19 @@ auto_clippers_button.addEventListener("click", () => {
 });
 
 setInterval(function () {
-    if(inches_count > 0) {
+    if(inches_count > auto_clippers) {
         paperclip_count += auto_clippers;
         inches_count -= auto_clippers;
         paperclip.innerText = "Paperclips: " + paperclip_count;
         inches.innerText = inches_count + " inches";
         unsold_inventory_count += auto_clippers;
+        unsold_inventory.innerText = "Unsold Inventory: " + unsold_inventory_count;
+    } else if(inches_count > 0) {
+        paperclip_count += inches_count;
+        inches_count = 0;
+        paperclip.innerText = "Paperclips: " + paperclip_count;
+        inches.innerText = inches_count + " inches";
+        unsold_inventory_count += inches_count;
         unsold_inventory.innerText = "Unsold Inventory: " + unsold_inventory_count;
     }
 }, 1000);
@@ -125,19 +148,22 @@ setInterval(function () {
     difference = paperclip_count;
 }, 1000);
 
-setInterval(function () {
-    if(unsold_inventory_count >= difference_per_second * 4) {
-        if(!isNaN((unsold_inventory_count / difference * public_demand_count / 100)*2)) {
-            let result = (unsold_inventory_count / difference * public_demand_count / 100) *2 ;
-            avaible_funds_count += result;
-            avaible_funds.innerText = "Avaible Funds: $ " + avaible_funds_count.toFixed(2);
-            unsold_inventory_count -= (difference_per_second * 4).toFixed(0);
-
-            unsold_inventory.innerText = "Unsold Inventory: " + unsold_inventory_count;
-        }
-        
-    }
-}, 5000);
+setInterval(function() {
+  
+    // Calcul de la quantité vendue (en tenant compte du stock restant)
+    const quantitySold = Math.min(unsold_inventory_count, Math.round(unsold_inventory_count * public_demand_count / 100));
+  
+    // Calcul du montant des ventes
+    const salesAmount = quantitySold * price_per_clip_count;
+  
+    // Mise à jour du solde disponible
+    avaible_funds_count += salesAmount;
+    avaible_funds.innerText = "Available Funds: $" + avaible_funds_count.toFixed(2);
+  
+    // Mise à jour du stock restant
+    unsold_inventory_count -= quantitySold;
+    unsold_inventory.innerText = "Unsold Inventory: " + unsold_inventory_count;
+  }, 5000);
 
 setInterval(function () {
     manufacturing_cost_count = Math.floor(Math.random() * 14) + 14;

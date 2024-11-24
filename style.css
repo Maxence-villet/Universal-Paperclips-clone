@@ -1,7 +1,17 @@
 * {
     padding: 0;
-    margin: 5px 0px;
+    margin: 0;
 }
+
+
+
+.body-discord {
+    background-color:#424549;
+    color: white;
+    font-family: sans-serif;
+
+}
+
 
 
 .div-price-per-clip {
@@ -32,6 +42,9 @@ button {
 .container {
     max-width: 250px;
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .div-auto-clippers {
@@ -39,4 +52,33 @@ button {
     flex-direction: row;
     align-items: center;
     gap: 5px;
+}
+
+.button-discord {
+    background-color: #7289da;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+header {
+    background-color: #ddd;
+    color: #777;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.header-discord {
+    background-color: #1e2124;
+    padding: 30px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+hr {
+    margin-bottom: 5px;
 }

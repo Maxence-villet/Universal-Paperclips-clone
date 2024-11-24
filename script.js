@@ -14,7 +14,7 @@ let lower = document.querySelector(".lower");
 let public_demand = document.querySelector(".public-demand");
 let public_demand_count = 31;
 let avaible_funds = document.querySelector(".avaible-funds");
-let avaible_funds_count = 40.00;
+let avaible_funds_count = 0.00;
 let difference_per_second = 0;
 let manufacturing_cost = document.querySelector(".manufacturing-cost");
 let manufacturing_cost_count = 20;
@@ -23,8 +23,30 @@ let auto_clippers_cost_count = 6.10;
 let auto_clippers_cost = document.querySelector(".auto-clippers-cost");
 let auto_clippers_button = document.querySelector(".div-auto-clippers button");
 let auto_clippers_paragraph = document.querySelector(".div-auto-clippers p");
-let auto_clippers_paragraph_count = 1;
+let auto_clippers_paragraph_count = 0;
 let auto_clippers = 0;
+let theme = document.querySelector("#theme");
+
+let buttons = document.querySelectorAll("button");
+let header = document.querySelector("header");
+let body = document.querySelector("body");
+
+theme.addEventListener("change", () => {
+    if(theme.value == "discord") {
+        buttons.forEach(button => {
+            button.classList.add("button-discord");
+        });
+        header.classList.add("header-discord");
+        body.classList.add("body-discord");
+    } else {
+        buttons.forEach(button => {
+        button.classList.remove("button-discord");
+        });
+        header.classList.remove("header-discord");
+        body.classList.remove("body-discord");
+    }
+});
+
 
 
 make_paperclip_button.addEventListener("click", () => {

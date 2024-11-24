@@ -14,7 +14,7 @@ let lower = document.querySelector(".lower");
 let public_demand = document.querySelector(".public-demand");
 let public_demand_count = 31;
 let avaible_funds = document.querySelector(".avaible-funds");
-let avaible_funds_count = 0.00;
+let avaible_funds_count = 1000.00;
 let difference_per_second = 0;
 let manufacturing_cost = document.querySelector(".manufacturing-cost");
 let manufacturing_cost_count = 20;
@@ -54,7 +54,7 @@ theme.addEventListener("change", () => {
 
 button_marketing.addEventListener("click", () => {
     if(avaible_funds_count >= marketing_cost_count) {
-        avaible_funds_count -= manufacturing_cost_count;
+        avaible_funds_count -= marketing_cost_count;
         public_demand_count *= 1.25;
         marketing_cost_count *= 2.25;
         marketing_level_count += 1;
